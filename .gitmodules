@@ -1,1 +1,3 @@
-
+[submodule "SymPyBotics"]
+	path = SymPyBotics
+	url = https://github.com/cdsousa/SymPyBotics.git
