@@ -2,7 +2,9 @@
 
 This is a fork of [SymPyBotics](https://github.com/cdsousa/SymPyBotics.git). I add some features to generate MATLAB code from SymPy expressions. Some bugs are also fixed.
 
-A demo to identify franka robot parameters is provided in `scripts/identify_franka.py`.
+A demo to identify franka robot parameters is provided in `scripts/identify_franka_Coulomb.py` and `scripts/identify_franka_viscous.py`.
+
+![Compare_Measure_Fit_Joint](https://github.com/user-attachments/assets/aa33a8d0-1945-4632-b093-325fe0f81a28)
 
 ## package
 

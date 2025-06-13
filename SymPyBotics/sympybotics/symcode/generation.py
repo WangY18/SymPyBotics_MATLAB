@@ -197,7 +197,7 @@ def zero_to_one_index(match):
     except ValueError:
         # 是变量索引，留给方法2处理
         new_idx = f'{idx} + 1'
-    return f'{var}({new_idx})'
+    return f'{var}(:, {new_idx})'
 
 def gen_matlab_func(code, out_parms, func_parms, func_name='func'):
     indent = 4 * ' '
@@ -215,7 +215,7 @@ def gen_matlab_func(code, out_parms, func_parms, func_name='func'):
 
     # mcode = re.sub(r'(\w)\[([^\[\]]+?)\]', r'\1(\2)', mcode)
 
-    # a[0] -> a(1)
+    # a[0] -> a(:,1)
     mcode = re.sub(r'(\w)\[([^\[\]]+?)\]', zero_to_one_index, mcode)
 
     return mcode

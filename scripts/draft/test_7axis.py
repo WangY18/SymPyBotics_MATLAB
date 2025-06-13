@@ -163,5 +163,6 @@ tau_func_str = code_to_func(
     ['q', 'dq', 'ddq'],  # 输入参数列表
     subs_dict            # 符号替换表
 )
-with open(r"../../results/dyn_franka_wyn/get_Torque.m", "w", encoding="utf-8") as f:
+
+with open(r"../../results/dyn_franka_Coulomb/get_Torque_test.m", "w", encoding="utf-8") as f:
     f.write(tau_func_str)
