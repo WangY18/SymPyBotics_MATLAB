@@ -1,10 +1,11 @@
 %% 
 A_write = [];
 for n_exp = 1:5
-    tab = readtable("..\data\Exp_20250612\output"+string(n_exp)+"\output.csv");
+    tab = readtable("..\..\data\Exp_20250612\output"+string(n_exp)+"\output.csv");
     
     Ts = 1e-3;
     q_command = [tab.q_command1,tab.q_command2,tab.q_command3,tab.q_command4,tab.q_command5,tab.q_command6,tab.q_command7];
+    q_predict = [tab.q_predict1,tab.q_predict2,tab.q_predict3,tab.q_predict4,tab.q_predict5,tab.q_predict6,tab.q_predict7];
     q_real = [tab.q_real1,tab.q_real2,tab.q_real3,tab.q_real4,tab.q_real5,tab.q_real6,tab.q_real7];
     dq_real = [tab.dq_real1,tab.dq_real2,tab.dq_real3,tab.dq_real4,tab.dq_real5,tab.dq_real6,tab.dq_real7];
     dq_gradient = gradient_uniformgrid(q_real')'/Ts;
@@ -42,6 +43,10 @@ figure
 for i = 1:7
     subplot(4,2,i)
     hold on
+    plot((1:size(q_command,1))*Ts,q_command(:,i),'.-')
+    plot((1:size(q_predict,1))*Ts,q_predict(:,i),'.-')
+    plot((1:size(q_real,1))*Ts,q_real(:,i),'.-')
+
     % plot((1:size(dq_real,1))*Ts,dq_real(:,i))
     % plot((1:size(dq_gradient,1))*Ts,dq_gradient(:,i),'--')
 
@@ -52,11 +57,12 @@ for i = 1:7
     % plot((1:size(dq_filter,1))*Ts,dq_filter(:,i),'k')
     % plot((1:size(dq_command,1))*Ts,dq_command(:,i),'b','LineWidth',2)
 
-    plot((1:size(torque_real,1))*Ts,torque_real(:,i),'k')
-    plot((1:size(torque_filter,1))*Ts,torque_filter(:,i),'b','LineWidth',2)
+    % plot((1:size(torque_real,1))*Ts,torque_real(:,i),'k')
+    % plot((1:size(torque_filter,1))*Ts,torque_filter(:,i),'b','LineWidth',2)
     hold off
-    xlim([5,59.8])
+    % xlim([5,59.8])
 end
+legend(["q_command","q_predict","q_real"])
 %% 
 figure
 i = 7;
